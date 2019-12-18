@@ -1,4 +1,4 @@
 class Sighting < ActiveRecord::Base
   belongs_to :user
-  belongs_to :birds
+  belongs_to :bird
 end
