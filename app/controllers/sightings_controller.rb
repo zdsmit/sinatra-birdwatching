@@ -9,4 +9,12 @@ class SightingsController < ApplicationController
     end
   end
 
+  get '/sightings/new' do
+    if !logged_in?
+      erb :'/users/signup'
+    else
+      erb :'/sightings/new_sighting'
+    end
+  end
+
 end
