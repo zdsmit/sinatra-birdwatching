@@ -2,13 +2,13 @@
 
 <form action="/new" method="POST">
   <label><h4>Bird Type:</h4></label>
-      <% Bird.all.each do |bird| %>
-        <label><%= bird.type %></label>
-        <input type="checkbox" id="bird_<%=bird.id%>" name="sighting[bird_id][]" value="<%= bird.id %>"><br>
-      <% end %>
+  <% Bird.all.each do |bird| %>
+    <label><%= bird.type %></label>
+    <input type="checkbox" id="bird_<%=bird.id%>" name="sighting[bird_id][]" value="<%= bird.id %>"><br>
+  <% end %>
 
-  <label><h4>New Bird Type:</h4></label>
-    <input type="text" id="new_bird" name="bird[type]">
+  <label>New Bird Type:</label>
+  <input type="text" id="new_bird" name="bird[type]">
 
 
   <label>Location:</label>
@@ -17,4 +17,6 @@
 
   <label>Date and Time:</label>
   <input type="datetime-local" name="time" id="time">
+
+  <input type="submit" value="Submit">
 </form>

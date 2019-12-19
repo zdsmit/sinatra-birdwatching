@@ -1,24 +1,17 @@
 class SightingsController < ApplicationController
 
   get '/sightings' do
-    if !logged_in?
-      erb :'/users/signup'
-    else
-      @sightings = Sighting.all
-      erb :'/sightings/sighting_index'
-    end
+    @sightings = Sighting.all
+    erb :'/sightings/sighting_index'
   end
 
   get '/sightings/new' do
-    if !logged_in?
-      erb :'/users/signup'
-    else
-      erb :'/sightings/new_sighting'
-    end
+    erb :'/sightings/new_sighting'
   end
 
   post '/new' do
     @sighting = Sighting.new(:time => params[:time], :place => params[:location])
+    redirect to "/sightings"
   end
 
 end
