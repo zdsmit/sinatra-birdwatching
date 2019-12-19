@@ -17,4 +17,8 @@ class SightingsController < ApplicationController
     end
   end
 
+  post '/new' do
+    @sighting = Sighting.new(:time => params[:time], :place => params[:location])
+  end
+
 end

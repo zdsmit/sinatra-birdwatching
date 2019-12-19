@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/signup'
     else
-      redirect to '/sighting_index'
+      redirect to '/sightings'
     end
   end
 
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/login'
     else
-      redirect to '/sighting_index'
+      redirect to '/sightings'
     end
   end
 
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       @user = User.new(:username => params[:username], :password => params[:password])
       @user.save
       session[:user_id] = @user.id
-      redirect to "/sightings_index"
+      redirect to "/sightings"
     end
   end
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.find_by(:username => params[:username])
     if @user and @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect to '/sighting_index'
+      redirect to '/sightings'
     else
       redirect to '/signup'
     end
