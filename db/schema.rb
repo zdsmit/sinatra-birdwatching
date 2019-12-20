@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_12_17_190935) do
 
   create_table "birds", force: :cascade do |t|
-    t.string "type"
+    t.string "species"
   end
 
   create_table "sightings", force: :cascade do |t|

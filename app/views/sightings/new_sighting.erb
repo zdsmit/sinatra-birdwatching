@@ -3,12 +3,12 @@
 <form action="/new" method="POST">
   <label><h4>Bird Type:</h4></label>
   <% Bird.all.each do |bird| %>
-    <label><%= bird.type %></label>
+    <label><%= bird.species %></label>
     <input type="checkbox" id="bird_<%=bird.id%>" name="sighting[bird_id][]" value="<%= bird.id %>"><br>
   <% end %>
 
   <label>New Bird Type:</label>
-  <input type="text" id="new_bird" name="bird[type]">
+  <input type="text" id="new_bird" name="sighting[new_bird]">
 
 
   <label>Location:</label>
