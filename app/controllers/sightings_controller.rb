@@ -9,9 +9,13 @@ class SightingsController < ApplicationController
     erb :'/sightings/new_sighting'
   end
 
+  get "/sightings/:id" do
+    @sighting = Sighting.find_by_id(params[:id])
+    erb "/sightings/show_sighting"
+  end
+
   post '/new' do
-    @sighting = Sighting.create(:time => params[:time], :place => params[:location])
-    @sighting.user = current_user
+    @sighting = current_user.sightings.create(:time => params[:time], :place => params[:location])
     @bird = Bird.create(:species => params[:species])
     #Bird.all.each method here?
     @sighting.bird = @bird
