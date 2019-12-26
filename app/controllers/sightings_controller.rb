@@ -12,9 +12,9 @@ class SightingsController < ApplicationController
   post '/new' do
     @sighting = Sighting.create(:time => params[:time], :place => params[:location])
     @sighting.user = current_user
-    @bird = params[:sighting][:new_bird]
+    @bird = Bird.create(:species => params[:species])
     #Bird.all.each method here?
-    @sighting.bird = params[:sighting[:bird_id][]]
+    @sighting.bird = @bird
     @sighting.save
     redirect to "/sightings"
   end

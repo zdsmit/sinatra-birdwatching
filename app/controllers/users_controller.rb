@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       @user = User.new(:username => params[:username], :password => params[:password])
       @user.save
       session[:user_id] = @user.id
-      redirect to "/sightings"
+      redirect to "/sightings/new"
     end
   end
 
