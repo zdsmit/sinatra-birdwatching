@@ -1,0 +1,8 @@
+<form action="/sightings/<%=@sighting.id%>" method="POST">
+  <input type="hidden" name="_method" value="patch">
+  <input type="text" name="bird" value="<%=@sighting.bird.species%>">
+  <input type="text" name="place" value="<%=@sighting.place%>">
+  <input type="datetime" name="time" value="<%=@sighting.time%>">
+
+  <input type="submit" value="Submit changes">
+</form>
