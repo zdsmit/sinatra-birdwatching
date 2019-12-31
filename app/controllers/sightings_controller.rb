@@ -33,7 +33,17 @@ class SightingsController < ApplicationController
         redirect to "/sightings/#{params[:id]}/edit"
     else
       @sighting = Sighting.find_by_id(params[:id])
-      if @sighting.update(bird: params[:bird], place: params[:place], time: params[:time])
+      @bird = params[:bird]
+      if @sighting.update(place: params[:place], time: params[:time])
+        Bird.all.detect do |bird|
+          if bird.species == @bird
+            @sighting.bird = bird
+          else
+            @newbird = Bird.create(species: @bird)
+            @sighting.bird = @newbird
+            @sighting.update(bird: @newbird)
+          end
+        end
         redirect to "/sightings/#{@sighting.id}"
       else
         redirect to "/sightings/#{params[:id]}/edit"
