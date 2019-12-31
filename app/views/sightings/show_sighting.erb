@@ -2,3 +2,12 @@
 <p>Spotted by: <%=@sighting.user%></p>
 <p>Location: <%=@sighting.place%></p>
 <p>Time: <%=@sighting.time%></p>
+
+<a href="/sightings/<%=@sighting.id%>/edit">Edit</a>
+
+
+<form action="/sightings/<%=@sighting.id%>/delete" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <br>
+  <input type="submit" value="Delete this report">
+</form>

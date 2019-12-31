@@ -51,4 +51,12 @@ class SightingsController < ApplicationController
     end
   end
 
+  delete "/sightings/:id/delete" do
+    @sighting = Sighting.find_by(params[:id])
+    if @sighting and @sighting.user == current_user
+      @sighting.delete
+    end
+    redirect to '/sightings'
+  end
+
 end
