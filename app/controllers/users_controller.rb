@@ -16,6 +16,15 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/logout' do
+    if logged_in?
+      session.destroy
+      redirect to '/login'
+    else
+      redirect to '/'
+    end
+  end
+
   post '/signup' do
     if params[:username] == "" || params[:password] == ""
       redirect to '/signup'
