@@ -20,7 +20,8 @@ class SightingsController < ApplicationController
   end
 
   post '/new' do
-    @sighting = current_user.sightings.create(:time => params[:time], :place => params[:location])
+    @sighting = Sighting.create(:time => params[:time], :place => params[:location])
+    @sighting.user = current_user
     @bird = Bird.create(:species => params[:species])
     #Bird.all.each method here?
     @sighting.bird = @bird
@@ -54,7 +55,7 @@ class SightingsController < ApplicationController
   delete "/sightings/:id/delete" do
     @sighting = Sighting.find_by(params[:id])
     if @sighting and @sighting.user == current_user
-      @sighting.delete
+      @sighting.destroy
     end
     redirect to '/sightings'
   end
