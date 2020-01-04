@@ -35,25 +35,29 @@ class SightingsController < ApplicationController
     else
       @sighting = Sighting.find_by_id(params[:id])
       @bird = params[:bird]
-      if @sighting.update(place: params[:place], time: params[:time])
-        Bird.all.detect do |bird|
-          if bird.species == @bird
-            @sighting.bird = bird
-          else
-            @newbird = Bird.create(species: @bird)
-            @sighting.bird = @newbird
-            @sighting.update(bird: @newbird)
+      if @sighting and @sighting.user == current_user
+        if @sighting.update(place: params[:place], time: params[:time])
+          Bird.all.detect do |bird|
+            if bird.species == @bird
+              @sighting.bird = bird
+            else
+              @newbird = Bird.create(species: @bird)
+              @sighting.bird = @newbird
+              @sighting.update(bird: @newbird)
+            end
           end
+          redirect to "/sightings/#{@sighting.id}"
+        else
+          redirect to "/sightings/#{params[:id]}/edit"
         end
-        redirect to "/sightings/#{@sighting.id}"
       else
-        redirect to "/sightings/#{params[:id]}/edit"
+        redirect to "/sightings/#{@sighting.id}"
       end
     end
   end
 
-  delete "/sightings/:id/delete" do
-    @sighting = Sighting.find_by(params[:id])
+  delete "/sightings/:id" do
+    @sighting = Sighting.find(params[:id])
     if @sighting and @sighting.user == current_user
       @sighting.destroy
     end

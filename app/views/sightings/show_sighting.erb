@@ -6,7 +6,7 @@
 <a href="/sightings/<%=@sighting.id%>/edit">Edit</a>
 
 
-<form action="/sightings/<%=@sighting.id%>/delete" method="POST">
+<form action="/sightings/<%=@sighting.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
   <br>
   <input type="submit" value="Delete this report">
