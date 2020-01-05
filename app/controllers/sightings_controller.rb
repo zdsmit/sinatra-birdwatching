@@ -1,22 +1,38 @@
 class SightingsController < ApplicationController
 
   get '/sightings' do
-    @sightings = Sighting.all
-    erb :'/sightings/sighting_index'
+    if logged_in?
+      @sightings = Sighting.all
+      erb :'/sightings/sighting_index'
+    else
+      redirect to "/login"
+    end
   end
 
   get '/sightings/new' do
-    erb :'/sightings/new_sighting'
+    if logged_in?
+      erb :'/sightings/new_sighting'
+    else
+      redirect to "/login"
+    end
   end
 
   get "/sightings/:id" do
-    @sighting = Sighting.find_by_id(params[:id])
-    erb :'/sightings/show_sighting'
+    if logged_in?
+      @sighting = Sighting.find_by_id(params[:id])
+      erb :'/sightings/show_sighting'
+    else
+      redirect to "/login"
+    end
   end
 
   get "/sightings/:id/edit" do
-    @sighting = Sighting.find_by_id(params[:id])
-    erb :'/sightings/update_sighting'
+    if logged_in?
+      @sighting = Sighting.find_by_id(params[:id])
+      erb :'/sightings/update_sighting'
+    else
+      redirect to "/login"
+    end
   end
 
   post '/new' do
