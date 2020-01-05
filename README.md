@@ -1,8 +1,6 @@
 # SinatraBirdwatching
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sinatra_birdwatching`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to Sinatra Birdwatching! This project is my second portfolio project, created for Flatiron School's Online Software Engineering course. This is a simple web app that will enable users to sign up and report sightings of interesting birds in their area. I hope you enjoy!
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: Upon arrival at the homepage, you will need to create a user account with a password. From that point, you will be able to follow the prompts to start reporting your own bird sightings.
 
 ## Development
 
