@@ -1,0 +1,13 @@
+<h3><%=@sighting.bird.species%></h3>
+<p>Spotted by: <%=@sighting.user.username%></p>
+<p>Location: <%=@sighting.place%></p>
+<p>Time: <%=@sighting.time%></p>
+
+<a href="/sightings/<%=@sighting.id%>/edit">Edit</a>
+
+
+<form action="/sightings/<%=@sighting.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <br>
+  <input type="submit" value="Delete this report">
+</form>

@@ -1,0 +1,8 @@
+<a href="/sightings/new">Report a new sighting!</a>
+
+<%@sightings.each do |sighting|%>
+  <h3><a href="/sightings/<%=sighting.id%>"><%=sighting.bird.species%></a></h3>
+  <p>Spotted by: <%=sighting.user.username%></p>
+  <p>Location: <%=sighting.place%></p>
+  <p>Time: <%=sighting.time%></p>
+<%end%>
