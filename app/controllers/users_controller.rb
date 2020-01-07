@@ -25,6 +25,15 @@ class UsersController < ApplicationController
     end
   end
 
+  get "/users/:id" do
+    if logged_in?
+      @user = User.find[params[:id]]
+      erb :'/users/show'
+    else
+      redirect to "/login"
+    end
+  end
+
   post '/signup' do
     if params[:username] == "" || params[:password] == ""
       redirect to '/signup'
