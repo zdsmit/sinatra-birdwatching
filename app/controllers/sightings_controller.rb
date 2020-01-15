@@ -36,7 +36,7 @@ class SightingsController < ApplicationController
   end
 
   post '/new' do
-    @sighting = Sighting.create(:time => params[:time], :place => params[:location])
+    @sighting = Sighting.create(:time => params[:time], :place => params[:place])
     @sighting.user = current_user
     @bird = Bird.create(:species => params[:species])
     #Bird.all.each method here?
