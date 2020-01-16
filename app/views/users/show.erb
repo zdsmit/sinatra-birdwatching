@@ -1,0 +1,5 @@
+Hi, <% @user.username %>!
+
+<% @user.birds.each do |bird| %>
+  <%= bird.species %>
+<% end %>
